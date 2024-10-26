@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Ticket Booking</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            background: #f3f3f3;
+        }
+
+        .container {
+            max-width: 900px;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            padding: 20px 0;
+            font-size: 2em;
+            color: #444;
+        }
+
+        .movie {
+            background: #fff;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .movie img {
+            width: 120px;
+            height: 160px;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            flex: 1;
+        }
+
+        .movie-title {
+            font-size: 1.4em;
+            margin: 0;
+            color: #222;
+        }
+
+        .movie-details {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 5px;
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+        }
+
+        .stars {
+            color: gold;
+            margin-right: 5px;
+        }
+
+        .seats {
+            font-size: 0.9em;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        .book-button {
+            padding: 10px 20px;
+            background: #0073e6;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .book-button:hover {
+            background: #005bb5;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">🎬 Book Your Movie Tickets 🎟</header>
+        <div id="movies-list"></div>
+    </div>
+
+    <script>
+        const movies = [
+            {
+                title: "Phullwanti-Marathi",
+                description: "Phulwanti is a Marathi film about a young girl facing love and social challenges in her village.",
+                rating: 4.8,
+                genre: "Drama, Romantic",
+                runtime: "2h 14m",
+                image: "phullwanti.avif",
+                seatsAvailable: 35,
+                url: "https://in.bookmyshow.com/nagpur/movies/phullwanti/ET00407816"
+            },
+            {
+                title: "Vicky vidhya ka woh Wala Video",
+                description: "Couple goals with dark Fantasy and their personal life.",
+                rating: 4.9,
+                genre: "Comedy, Drama",
+                runtime: "2h 32m",
+                image: "vicky.avif",
+                seatsAvailable: 12,
+                url: "https://in.bookmyshow.com/nagpur/movies/vicky-vidya-ka-woh-wala-video/ET00395211"
+            },
+            {
+                title: "Jigra",
+                description: "A love story of brother and sister over society.",
+                rating: 4.7,
+                genre: "Thriller, Drama",
+                runtime: "2h 49m",
+                image: "jigra.avif",
+                seatsAvailable: 22,
+                url: "https://in.bookmyshow.com/buytickets/jigra-nagpur/movie-nagp-ET00370844-MT/20241025"
+            },
+            {
+                title: "Martin",
+                description: "Fight against the world of peace.",
+                rating: 4.8,
+                genre: "Drama, Action, Thriller",
+                runtime: "2h 28m",
+                image: "martin.avif",
+                seatsAvailable: 35,
+                url: "https://in.bookmyshow.com/nagpur/movies/martin/ET00407816"
+            },
+            {
+                title: "Surya's Saturday",
+                description: "Batman faces the Joker in this iconic film.",
+                rating: 4.9,
+                genre: "Action, Drama",
+                runtime: "2h 32m",
+                image: "surya.avif",
+                seatsAvailable: 12,
+                url: "https://in.bookmyshow.com/nagpur/movies/suryas-saturday/ET00409364"
+            },
+            {
+                title: "Bandaa Singh Choudhary",
+                description: "A journey beyond our galaxy.",
+                rating: 4.7,
+                genre: "Action, Drama",
+                runtime: "1h 53m",
+                image: "bandaa.avif",
+                seatsAvailable: 22,
+                url: "https://in.bookmyshow.com/nagpur/movies/bandaa-singh-chaudhary/ET00414035"
+            },
+            {
+                title: "Vettaiyan - The Hunter",
+                description: "Facing love and social challenges in her village.",
+                rating: 4.8,
+                genre: "Drama, Action",
+                runtime: "2h 43m",
+                image: "veta.avif",
+                seatsAvailable: 35,
+                url: "https://in.bookmyshow.com/nagpur/movies/vettaiyan-the-hunter/ET00412743"
+            },
+            {
+                title: "Karmayogi Abasaheb",
+                description: "A biographical drama.",
+                rating: 4.9,
+                genre: "Biography, Drama",
+                runtime: "2h 38m",
+                image: "karma.avif",
+                seatsAvailable: 12,
+                url: "https://in.bookmyshow.com/nagpur/movies/karmayogi-abasaheb/ET00414811"
+            },
+            {
+                title: "The Wild Robot",
+                description: "An animated adventure story.",
+                rating: 4.7,
+                genre: "Adventure, Animation, Family",
+                runtime: "1h 41m",
+                image: "wild.avif",
+                seatsAvailable: 22,
+                url: "https://in.bookmyshow.com/nagpur/movies/the-wild-robot/ET00398665"
+            },
+            {
+                title: "Look Back",
+                description: "A film about a young girl facing love and social challenges.",
+                rating: 4.8,
+                genre: "Drama, Anime",
+                runtime: "53m",
+                image: "look.avif",
+                seatsAvailable: 35,
+                url: "https://in.bookmyshow.com/nagpur/movies/look-back/ET00413036"
+            },
+            {
+                title: "Venom: The Last Dance",
+                description: "An action-packed superhero adventure.",
+                rating: 4.9,
+                genre: "Action, Adventure, Sci-Fi",
+                runtime: "1h 50m",
+                image: "venom.avif",
+                seatsAvailable: 12,
+                url: "https://in.bookmyshow.com/nagpur/movies/venom-the-last-dance/ET00383474"
+            },
+            {
+                title: "Stree 2: Sarkate ka Aatank",
+                description: "A horror comedy sequel.",
+                rating: 4.7,
+                genre: "Comedy, Drama, Horror",
+                runtime: "2h 29m",
+                image: "stree.avif",
+                seatsAvailable: 22,
+                url: "https://in.bookmyshow.com/nagpur/movies/stree-2-sarkate-ka-aatank/ET00364249"
+            }
+        ];
+
+        const moviesList = document.getElementById('movies-list');
+
+        // Function to render movies
+        const renderMovies = () => {
+            movies.forEach(movie => {
+                const movieElement = document.createElement('div');
+                movieElement.className = 'movie';
+                movieElement.innerHTML = `
+                    <img src="${movie.image}" alt="${movie.title}" />
+                    <div class="movie-info">
+                        <h2 class="movie-title">${movie.title}</h2>
+                        <p class="movie-details">${movie.genre} • ${movie.runtime}</p>
+                        <div class="rating">
+                            <span class="stars">${"★".repeat(Math.round(movie.rating))}</span>
+                            <span>${movie.rating}</span>
+                        </div>
+                        <p class="seats">${movie.seatsAvailable > 0 ? `${movie.seatsAvailable} seats available` : "Sold Out"}</p>
+                        ${movie.seatsAvailable > 0 ? `<a href="${movie.url}"><button class="book-button">Book Now</button></a>` : ""}
+                    </div>
+                `;
+                moviesList.appendChild(movieElement);
+            });
+        };
+
+        // Initial render
+        renderMovies();
+    </script>
+</body>
+</html>

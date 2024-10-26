@@ -2,32 +2,124 @@
 <script>
     let movies = [
       {
-        title: "Inception",
-        description: "A mind-bending thriller by Christopher Nolan.",
+        title: "Phullwanti-Marathi",
+        description: "Phulwanti is a Marathi film about a young girl facing love and social challenges in her village.",
         rating: 4.8,
-        genre: "Sci-Fi, Thriller",
-        runtime: "2h 28m",
-        image: "your-image-url",
-        seatsAvailable: 35
+        genre: "Drama, Romantic",
+        runtime: "2h 14m",
+        image: "phullwanti.avif",
+        seatsAvailable: 35,
+        url:"https://in.bookmyshow.com/nagpur/movies/phullwanti/ET00407816"
       },
       {
-        title: "The Dark Knight",
-        description: "Batman faces the Joker in this iconic film.",
+        title: "Vicky vidhya ka woh Wala Video",
+        description: "Couple goals with dark Fantasy and there personal life.",
         rating: 4.9,
-        genre: "Action, Crime, Drama",
+        genre: "Comedy, Drama",
         runtime: "2h 32m",
-        image: "your-image-url",
-        seatsAvailable: 12
+        image: "vicky.avif",
+        seatsAvailable: 12,
+        url:"https://in.bookmyshow.com/nagpur/movies/vicky-vidya-ka-woh-wala-video/ET00395211"
       },
       {
         title: "Jigra",
-        description: "A journey beyond our galaxy.",
+        description: "A love of brother sister over society",
         rating: 4.7,
-        genre: "Sci-Fi, Drama",
+        genre: "Thriller, Drama",
         runtime: "2h 49m",
         image: "jigra.avif",
         seatsAvailable: 22,
         url:"https://in.bookmyshow.com/buytickets/jigra-nagpur/movie-nagp-ET00370844-MT/20241025"
+      },
+      {
+        title: "Martin",
+        description: "Fight against the world of peace.",
+        rating: 4.8,
+        genre: "Drama, Action,Thriller",
+        runtime: "2h 28m",
+        image: "martin.avif",
+        seatsAvailable: 35,
+        url:"https://in.bookmyshow.com/nagpur/movies/phullwanti/ET00407816"
+      },
+      {
+        title: "Surya's Saturday",
+        description: "Batman faces the Joker in this iconic film.",
+        rating: 4.9,
+        genre: "Action, Drama",
+        runtime: "2h 32m",
+        image: "surya.avif",
+        seatsAvailable: 12,
+        url:"https://in.bookmyshow.com/nagpur/movies/suryas-saturday/ET00409364"
+      },
+      {
+        title: "Bandaa singh Choudhary",
+        description: "A journey beyond our galaxy.",
+        rating: 4.7,
+        genre: "Action, Drama",
+        runtime: "1h 53m",
+        image: "bandaa.avif",
+        seatsAvailable: 22,
+        url:"https://in.bookmyshow.com/nagpur/movies/bandaa-singh-chaudhary/ET00414035"
+      },
+      {
+        title: "Vettaiyan- The Hunter",
+        description: "facing love and social challenges in her village.",
+        rating: 4.8,
+        genre: "Drama,Action",
+        runtime: "2h 43m",
+        image: "veta.avif",
+        seatsAvailable: 35,
+        url:"https://in.bookmyshow.com/nagpur/movies/vettaiyan-the-hunter/ET00412743"
+      },
+      {
+        title: "Karmayogi Abasaheb",
+        description: "Batman faces the Joker in this iconic film.",
+        rating: 4.9,
+        genre: "Biography, Drama",
+        runtime: "2h 38m",
+        image: "karma.avif",
+        seatsAvailable: 12,
+        url:"https://in.bookmyshow.com/nagpur/movies/karmayogi-abasaheb/ET00414811"
+      },
+      {
+        title: "The Wild Robot",
+        description: "A journey beyond our galaxy.",
+        rating: 4.7,
+        genre: "Adventure,Animation, Family",
+        runtime: "1h 41m",
+        image: "wild.avif",
+        seatsAvailable: 22,
+        url:"https://in.bookmyshow.com/nagpur/movies/the-wild-robot/ET00398665"
+      },
+      {
+        title: "Look Back",
+        description: "film about a young girl facing love and social challenges in her village.",
+        rating: 4.8,
+        genre: "Drama,Anime",
+        runtime: "53m",
+        image: "look.avif",
+        seatsAvailable: 35,
+        url:"https://in.bookmyshow.com/nagpur/movies/look-back/ET00413036"
+      },
+      {
+        title: "Venom: The Last Dance",
+        description: "Batman faces the Joker in this iconic film.",
+        rating: 4.9,
+        genre: "Action,Adventure,Sci-Fi",
+        runtime: "1h 50m",
+        image: "venom.avif",
+        seatsAvailable: 12,
+        url:"https://in.bookmyshow.com/nagpur/movies/venom-the-last-dance/ET00383474"
+      },
+      {
+        title: "Stree 2: Sarkate ka Aatank",
+        description: "A journey beyond our galaxy.",
+        rating: 4.7,
+        genre: "Comedy, Drama,Horror",
+        runtime: "2h 29m",
+        image: "stree.avif",
+        seatsAvailable: 22,
+        url:"https://in.bookmyshow.com/nagpur/movies/stree-2-sarkate-ka-aatank/ET00364249"
       }
     ];
   </script>
@@ -108,12 +200,14 @@
     .book-button:hover {
       background: #005bb5;
     }
+    
   </style>
   
-  <div class="container">
+  
+  <div class="container mx-auto" style="min-height:auto;width:100vw;">
     <header class="header">🎬 Book Your Movie Tickets 🎟</header>
     {#each movies as movie}
-      <div class="movie">
+      <div class="movie ">
         <img src={movie.image} alt={movie.title} />
         <div class="movie-info">
           <h2 class="movie-title">{movie.title}</h2>
